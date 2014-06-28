@@ -2,7 +2,7 @@
 
 
 var $cells = {};
-var presetBoard;
+var boardVals;
 
 $(document).ready(function() {
 //declare functions
@@ -13,7 +13,7 @@ $.extend({getUrlVars:function(){for(var b,a=[],c=window.location.href.slice(wind
 //generate the table cells
 function makeBoard() {
 	//set board to unselected if no preset
-	if (!presetBoard){ presetBoard=[6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6]; }
+	if (!boardVals){ boardVals=[6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6]; }
 
 	var boardBGs = {	0:'bg_0', 
 						1:'bg_1' };
@@ -31,7 +31,7 @@ function makeBoard() {
 		var $populator = {};
 		for (var j=0; j < 6; ++j){
 			var bgClass=boardBGs[((i%2)+(j%2)+1)%2];	//calculate the bg class
-			var orbClass=orbSprites[presetBoard[6*i+j]];
+			var orbClass=orbSprites[boardVals[6*i+j]];
 			var $orb = $('<div>').addClass('orb').addClass(orbClass);
 			var $cell = $('<td>')
 				.addClass(bgClass)
@@ -46,7 +46,8 @@ function makeBoard() {
 
 //declare global elements
 var $body = $('body');
-presetBoard = JSON.parse($.getUrlVar('board'));
+var a = $.getUrlVar('board');
+boardVals = a ? a : undefined; a=null;
 var $board = $('<table>', {id: 'board'}); makeBoard();
 
 var test = [0,1,2,3,4,5,
