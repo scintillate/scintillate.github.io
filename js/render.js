@@ -47,7 +47,7 @@ function makeBoard() {
 //declare global elements
 var $body = $('body');
 var a = $.getUrlVar('board');
-boardVals = a ? a : undefined; a=null;
+boardVals = a ? JSON.parse(a) : undefined; a=null;
 var $board = $('<table>', {id: 'board'}); makeBoard();
 
 var test = [0,1,2,3,4,5,
