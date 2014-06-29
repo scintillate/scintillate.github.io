@@ -4,7 +4,6 @@
 var $cells = {};
 var boardVals;
 
-$(document).ready(function() {
 //declare functions
 
 //get GET Params
@@ -50,29 +49,7 @@ var a = $.getUrlVar('board');
 boardVals = a ? JSON.parse(a) : undefined; a=null;
 var $board = $('<table>', {id: 'board'}); makeBoard();
 
-var test = [0,1,2,3,4,5,
-			0,1,2,3,4,5,
-			0,1,2,3,4,5,
-			0,1,2,3,4,5,
-			0,1,2,3,4,6];
-
-
-
-
-
-
-
-
-
 //add board to body
 function render() {
 	$body.append($board);
 }
-
-render();
-
-
-
-
-
-});
